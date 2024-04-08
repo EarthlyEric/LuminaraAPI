@@ -13,7 +13,12 @@ class Map():
         pin = folium.Marker(location=location).add_to(map)
 
         filename = str(uuid.uuid4())
-        map.save(os.path.abspath(f"/temp/{filename}.html"))
+        temp_dir = os.path.abspath("./temp")
+        
+        if not os.path.exists(temp_dir):
+            os.makedirs(temp_dir)
+
+        map.save(os.path.join(temp_dir, f"{filename}.html"))
 
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
