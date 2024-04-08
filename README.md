@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/EarthlyEric/Luminara">
-    <img src="/res/logo/Luminara_Banner_Github.png" alt="Logo" width="680">
+  <a href="https://github.com/EarthlyEric/LuminaraAPI">
+    <img src="https://github.com/EarthlyEric/Luminara/blob/master/res/logo/Luminara_Banner_Github.png" alt="Logo" width="680">
   </a>
 
   <h2 align="center">LuminaraAPI</h2>
