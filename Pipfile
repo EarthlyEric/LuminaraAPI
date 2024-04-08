@@ -9,6 +9,7 @@ folium = "*"
 selenium = "*"
 configobj = "*"
 uvicorn = "*"
+pyvirtualdisplay = "*"
 
 [dev-packages]
 

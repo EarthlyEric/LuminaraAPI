@@ -2,35 +2,14 @@ FROM python:3.10-alpine3.17
 ENV betaMode=False
 ENV deployToken default_value
 
-RUN apk update && apk add --no-cache bash \
-        alsa-lib \
-        at-spi2-atk \
-        atk \
-        cairo \
-        cups-libs \
-        dbus-libs \
-        eudev-libs \
-        expat \
-        flac \
-        gdk-pixbuf \
-        glib \
-        libgcc \
-        libjpeg-turbo \
-        libpng \
-        libwebp \
-        libx11 \
-        libxcomposite \
-        libxdamage \
-        libxext \
-        libxfixes \
-        tzdata \
-        libexif \
-        udev \
-        xvfb \
-        zlib-dev \
-        chromium \
-        chromium-chromedriver
-        
+RUN echo "http://dl-4.alpinelinux.org/alpine/v3.4/main" >> /etc/apk/repositories && \
+	echo "http://dl-4.alpinelinux.org/alpine/v3.4/community" >> /etc/apk/repositories
+
+
+RUN apk update && \
+	apk add  curl unzip libexif udev chromium chromium-chromedriver xvfb && \
+	pip install pyvirtualdisplay
+
 WORKDIR /app
 COPY Pipfile ./
 COPY Pipfile.lock ./
