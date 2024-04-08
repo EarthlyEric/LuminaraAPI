@@ -3,9 +3,6 @@ import asyncio
 import uuid
 import folium
 from selenium import webdriver
-from concurrent.futures.thread import ThreadPoolExecutor
-from pyvirtualdisplay import Display
-
 
 class Map():
     @classmethod
@@ -20,9 +17,6 @@ class Map():
             os.makedirs(temp_dir)
 
         map.save(os.path.join(temp_dir, f"{filename}.html"))
-
-        display = Display(visible=True, size=(1280, 720))
-        display.start()
 
         options = webdriver.ChromeOptions()
         options.add_argument("--headless")  
@@ -40,6 +34,5 @@ class Map():
         driver.set_window_size(1280, 720)
         screenshot = driver.get_screenshot_as_base64()
         driver.quit()
-        display.stop()
 
         return screenshot

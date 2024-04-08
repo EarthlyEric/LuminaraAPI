@@ -2,12 +2,12 @@ FROM python:3.10-alpine3.17
 ENV betaMode=False
 ENV deployToken default_value
 
-RUN echo "http://dl-4.alpinelinux.org/alpine/v3.4/main" >> /etc/apk/repositories && \
-	echo "http://dl-4.alpinelinux.org/alpine/v3.4/community" >> /etc/apk/repositories
+RUN echo "http://dl-4.alpinelinux.org/alpine/v3.17/main" >> /etc/apk/repositories && \
+	echo "http://dl-4.alpinelinux.org/alpine/v3.17/community" >> /etc/apk/repositories
 
 
 RUN apk update && \
-	apk add  curl unzip libexif udev chromium chromium-chromedriver xvfb xorg-server-xephyr && \
+	apk add  curl unzip libexif udev chromium chromium-chromedriver xvfb-run && \
 	pip install pyvirtualdisplay
 
 WORKDIR /app
