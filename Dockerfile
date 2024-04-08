@@ -2,10 +2,35 @@ FROM python:3.10-alpine3.17
 ENV betaMode=False
 ENV deployToken default_value
 
-RUN apk update && \
-    apk upgrade 
-RUN apk add build-base linux-headers chromium-chromedriver chromium
-
+RUN apk update && apk add --no-cache bash \
+        alsa-lib \
+        at-spi2-atk \
+        atk \
+        cairo \
+        cups-libs \
+        dbus-libs \
+        eudev-libs \
+        expat \
+        flac \
+        gdk-pixbuf \
+        glib \
+        libgcc \
+        libjpeg-turbo \
+        libpng \
+        libwebp \
+        libx11 \
+        libxcomposite \
+        libxdamage \
+        libxext \
+        libxfixes \
+        tzdata \
+        libexif \
+        udev \
+        xvfb \
+        zlib-dev \
+        chromium \
+        chromium-chromedriver
+        
 WORKDIR /app
 COPY Pipfile ./
 COPY Pipfile.lock ./
