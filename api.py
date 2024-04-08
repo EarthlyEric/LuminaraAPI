@@ -3,11 +3,15 @@ from fastapi import FastAPI
 from core.config import Config
 from router.map_gen import mapGen
 
-app = FastAPI()
+config = Config()
+app = FastAPI(title="Luminara API",
+            version=config.version,
+            description="A RESTful API for Luminara.",
+            docs_url="/",
+              )
 
-@app.get("/")
+@app.get("/ping")
 async def root():
-    config=Config()
     return {"version": config.version}
 
 app.include_router(mapGen)
