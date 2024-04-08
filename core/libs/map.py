@@ -26,8 +26,8 @@ class Map():
 
         driver =  webdriver.Chrome(options=options)
         driver.get("file://" + os.path.abspath(f"./temp/{filename}.html"))
-        await asyncio.sleep(4)
-        driver.set_window_size(1280, 720)
+        await asyncio.sleep(5)
+        driver.set_window_size(640, 360)
         screenshot = driver.get_screenshot_as_base64().encode("utf-8")
         driver.quit()
         os.remove(os.path.join(temp_dir, f"{filename}.html"))
