@@ -21,7 +21,7 @@ class Map():
 
         map.save(os.path.join(temp_dir, f"{filename}.html"))
 
-        display = Display(visible=0, size=(1280, 720))
+        display = Display(visible=True, size=(1280, 720))
         display.start()
 
         options = webdriver.ChromeOptions()
