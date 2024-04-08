@@ -6,7 +6,7 @@ from core.libs.map import Map
 
 mapGen = APIRouter()
 
-@mapGen.get("/generate/{pos}")
+@mapGen.get("/generateMapImages/{pos}")
 async def generate_map(pos: str):
     config = Config()
     pos1,pos2 = pos.split(",")
