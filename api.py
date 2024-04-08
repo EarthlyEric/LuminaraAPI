@@ -12,7 +12,6 @@ async def root():
 
 app.include_router(mapGen)
 
-
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app,port=443)
+    uvicorn.run(app,host="0.0.0.0",port=443)

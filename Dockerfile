@@ -14,5 +14,4 @@ RUN  pip3 install pipenv  \
     && pip3 install -r requirements.txt
 COPY . .
 EXPOSE 443
-EXPOSE 2333
 CMD [ "python3", "api.py" ]
