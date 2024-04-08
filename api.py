@@ -10,7 +10,7 @@ app = FastAPI(title="Luminara API",
             docs_url="/",
               )
 
-@app.get("/ping")
+@app.get("/status")
 async def root():
     return {"version": config.version}
 
