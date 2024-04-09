@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi.templating import Jinja2Templates
 
 from core.config import Config
 from router.map_gen import mapGen
@@ -14,7 +14,11 @@ app = FastAPI(title="Luminara API",
             docs_url="/docs",
             redoc_url=None
               )
-app.mount("/", StaticFiles(directory="static",html=True), name="static")
+app.mount("/static", StaticFiles(directory="static",html=True), name="static")
+
+@app.get("/",include_in_schema=False)
+async def index():
+    return HTMLResponse(content=open("static/index.html").read(), status_code=200)
 
 @app.get("/status")
 async def status():
