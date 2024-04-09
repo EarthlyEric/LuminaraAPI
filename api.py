@@ -1,6 +1,8 @@
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.openapi.docs import get_swagger_ui_html
 
 from core.config import Config
 from router.map_gen import mapGen
@@ -10,7 +12,9 @@ app = FastAPI(title="Luminara API",
             version=config.version,
             description="A RESTful API for Luminara.",
             docs_url="/docs",
+            redoc_url=None
               )
+app.mount("/", StaticFiles(directory="static",html=True), name="static")
 
 @app.get("/status")
 async def status():
