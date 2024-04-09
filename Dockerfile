@@ -18,4 +18,4 @@ RUN  pip3 install pipenv  \
     && pip3 install -r requirements.txt
 COPY . .
 EXPOSE 443
-ENTRYPOINT [ "deploy.sh" ]
+CMD ["sh","deploy.sh"]

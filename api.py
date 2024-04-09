@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 
 from core.config import Config
@@ -15,6 +16,10 @@ app = FastAPI(title="Luminara API",
             redoc_url=None
               )
 app.mount("/static", StaticFiles(directory="static",html=True), name="static")
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return FileResponse("static/favicon.ico",status_code=200)
 
 @app.get("/",include_in_schema=False)
 async def index():
