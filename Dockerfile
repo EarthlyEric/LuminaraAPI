@@ -1,6 +1,6 @@
 FROM python:3.10-alpine3.17
-ENV betaMode=False
-ENV deployToken default_value
+ARG vcs-ref=0
+ENV BUILD_ID=$vcs-ref
 
 RUN echo "http://dl-4.alpinelinux.org/alpine/v3.17/main" >> /etc/apk/repositories && \
 	echo "http://dl-4.alpinelinux.org/alpine/v3.17/community" >> /etc/apk/repositories
