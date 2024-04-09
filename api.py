@@ -23,7 +23,11 @@ async def favicon():
 
 @app.get("/",include_in_schema=False)
 async def index():
-    return HTMLResponse(content=open("static/index.html").read(), status_code=200)
+    return HTMLResponse(content=open("static/index.html", encoding="UTF-8").read(), status_code=200)
+
+@app.get("/music",include_in_schema=False)
+async def index():
+    return HTMLResponse(content=open("static/music.html", encoding="UTF-8").read(), status_code=200)
 
 @app.get("/status")
 async def status():
