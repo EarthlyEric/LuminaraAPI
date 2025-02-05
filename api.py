@@ -1,12 +1,10 @@
-import os
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from fastapi.templating import Jinja2Templates
 
 from core.config import Config
-from router.map_gen import mapGen
+from router.utils.map_gen import mapGen
 
 config = Config()
 app = FastAPI(title="Luminara API",
@@ -34,7 +32,3 @@ async def status():
     return {"version": config.version, "buildid": config.buildid}
 
 app.include_router(mapGen)
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app,host="0.0.0.0",port=443)

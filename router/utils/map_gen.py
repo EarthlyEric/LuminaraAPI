@@ -1,10 +1,12 @@
 from fastapi import FastAPI,APIRouter
 
 from core.config import Config
-from core.libs.map import Map
+from core.utils.map import Map
 
 
-mapGen = APIRouter()
+mapGen = APIRouter(
+    prefix="/utils"
+)
 
 @mapGen.get("/generateMapImages/{pos}")
 async def generate_map(pos: str):
