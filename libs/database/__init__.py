@@ -6,8 +6,8 @@ from sqlalchemy.future import select
 from sqlalchemy.sql import insert, func
 
 from .schema import ApiKey, Base
-from core.config import config
-from core.utils.tokenGen import generateAPIKey
+from libs.config import config
+from libs.utils.tokenGen import generateAPIKey
 
 DATABASE_URL = f"postgresql+asyncpg://{config.user}:{config.password}@{config.host}:{config.port}/{config.database}"
 

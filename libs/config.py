@@ -10,21 +10,21 @@ def getCommitSHA():
         return None
     
 def genSecretKey():
-    if not os.path.exists('./core/secret'):
-        with open('./core/secret', 'w') as f:
+    if not os.path.exists('./libs/secret'):
+        with open('./libs/secret', 'w') as f:
             key = str(os.urandom(32).hex())
             f.write(key)
             
-    with open('./core/secret','r') as f:
+    with open('./libs/secret','r') as f:
         if f.read().strip() == '':
             key = str(os.urandom(32).hex())
-            with open('./core/secret', 'w') as f:
+            with open('./libs/secret', 'w') as f:
                 f.write(key)
         else:
             return f.read().strip()
 
 class Config:
-    def __init__(self,versionFile='./core/version'):
+    def __init__(self,versionFile='./libs/version'):
         with open(versionFile) as file:
             self.version = json.load(file)['version']
         

@@ -159,6 +159,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 test.py
-core/secret
+libs/secret
 api_key.txt
 # ignore all generated files

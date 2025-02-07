@@ -4,9 +4,9 @@ from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from core.database import getSession
-from core.database.schema import ApiKey
-from core.utils.tokenGen import createAccessToken
+from libs.database import getSession
+from libs.database.schema import ApiKey
+from libs.utils.tokenGen import createAccessToken
 
 token = APIRouter(
     prefix="/token",

@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from fastapi import Depends
 
-from core.config import config
-from core.utils.mapGen import Map
-from core.utils.tokenGen import verifyAccessToken
+from libs.config import config
+from libs.utils.mapGen import Map
+from libs.utils.tokenGen import verifyAccessToken
 
 map = APIRouter(
     prefix="/map"
@@ -23,5 +23,7 @@ async def generate_map(pos: str, payload: str = Depends(verifyAccessToken)):
 
     return {
         "version": config.version, 
-        "pos1": pos1, "pos2": pos2, 
-        "image": image}
+        "pos1": pos1, 
+        "pos2": pos2, 
+        "image": image
+        }
