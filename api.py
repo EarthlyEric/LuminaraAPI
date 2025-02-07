@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 
-from lib.config import config
+from libs.config import config
 from libs import database
 from router.ws import ws
 from router.auth import auth
