@@ -1,7 +1,9 @@
-from fastapi import APIRouter
-from core.config import Config
+from fastapi import APIRouter, HTTPException
+from fastapi import Depends
 
+from core.config import config
 from core.utils.mapGen import Map
+from core.utils.tokenGen import verifyAccessToken
 
 map = APIRouter(
     prefix="/map"
@@ -11,8 +13,10 @@ map = APIRouter(
          summary="Generate a map image with a marker",
          description="Generate a map image with a marker at the specified location, and return the image as a base64 string",
         )
-async def generate_map(pos: str):
-    config = Config()
+async def generate_map(pos: str, payload: str = Depends(verifyAccessToken)):
+    if not payload:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    
     pos1,pos2 = pos.split(",")
     location = [pos1,pos2]
     image = await Map.generate(location)
