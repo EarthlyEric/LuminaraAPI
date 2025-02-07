@@ -37,7 +37,7 @@ class Config:
         self.host = os.getenv('POSTGRES_HOST')
         self.port = os.getenv('POSTGRES_PORT')
         self.database = os.getenv('POSTGRES_DB')
-        self.database_debug = os.getenv('POSTGRES_DEBUG', False)
+        self.database_debug = bool(os.getenv('POSTGRES_DEBUG', False))
         
         self.jwt_secret_key = os.getenv('SECRET_KEY', genSecretKey())
         
