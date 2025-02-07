@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+    db:
+        image: postgres:13.2-alpine
+        restart: always
+        environment:
+            POSTGRES_DB: luminara_db
+            POSTGRES_USER: luminara_user
+            POSTGRES_PASSWORD: luminara_password
+            PGDATA: /var/lib/postgresql/data
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+    pgadmin:
+        image: dpage/pgadmin4:latest
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@destinysoul.xyz 
+            PGADMIN_DEFAULT_PASSWORD: ADMIN_PASSWORD
+            PGADMIN_LISTEN_PORT: 80
+        ports:
+            - "8080:80"
+        volumes:
+            - pgadmin-data:/var/lib/pgadmin
+        links:
+            - "db:pgsql-server"
+volumes:
+    db-data:
+    pgadmin-data:
