@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.future import select
 from sqlalchemy.sql import insert, func
 
-from .model import ApiKey, Base
+from .schema import ApiKey, Base
 from core.config import config
 from core.utils.tokenGen import generateAPIKey
 
