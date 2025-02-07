@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+from fastapi.security import APIKeyHeader
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
@@ -11,7 +12,10 @@ from router.utils import utils
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await database.init_db()
+    if config.database_debug:
+        await database.resetDatabase()
+    await database.initDatabase()
+    await database.createRootAPIKey()
     yield
 
 app = FastAPI(title="Luminara API",
